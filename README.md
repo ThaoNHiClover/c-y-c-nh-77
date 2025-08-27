@@ -1,1 +1,119 @@
-# c-y-c-nh-77
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cây Cảnh 77 - Trang chủ</title>
+  <style>
+    body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333;}
+    header {background:#228B22; color:#fff; padding:16px; text-align:center; font-size:24px; font-weight:bold;}
+    nav {display:flex; justify-content:center; gap:20px; background:#2e7d32; padding:10px 0;}
+    nav a {color:#fff; text-decoration:none; font-weight:bold;}
+    .hero {text-align:center; padding:40px; background:#e8f5e9;}
+    .hero h1 {font-size:36px; margin-bottom:10px;}
+    .hero p {font-size:18px; color:#555;}
+    .product-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; padding:20px; max-width:1200px; margin:0 auto;}
+    .product {background:#fff; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;}
+    .product img {width:100%; height:220px; object-fit:cover;}
+    .product h3 {margin:10px; font-size:20px;}
+    .product p {margin:0 10px 10px; color:#666; font-size:14px;}
+    .price {margin:10px; font-size:18px; color:#8B4513; font-weight:bold;}
+    .btn-add {margin:10px; padding:10px; background:#228B22; color:#fff; border:none; border-radius:6px; cursor:pointer; font-size:16px;}
+    .btn-add:hover {background:#2e7d32;}
+    .cart {position:fixed; top:20px; right:20px; background:#fff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.2); padding:16px; width:280px; display:none;}
+    .cart h4 {margin-top:0;}
+    .cart-item {display:flex; justify-content:space-between; font-size:14px; margin-bottom:6px;}
+    .checkout {background:#8B4513; color:#fff; border:none; padding:10px; width:100%; margin-top:10px; border-radius:6px; cursor:pointer;}
+    footer {text-align:center; padding:20px; background:#2e7d32; color:#fff; margin-top:30px;}
+    @media(max-width:600px){.hero h1{font-size:28px;}.product img{height:180px;}}
+  </style>
+</head>
+<body>
+  <header>Cây Cảnh 77</header>
+  <nav>
+    <a href="#">Trang chủ</a>
+    <a href="#sanpham">Sản phẩm</a>
+    <a href="#lienhe">Liên hệ</a>
+  </nav>
+  <section class="hero">
+    <h1>Chăm sóc cây, nuôi mộng xanh</h1>
+    <p>Chuyên Mai Vàng, Thần Tài, Nha Đam và Phong Lan - giao tận nơi Đà Nẵng.</p>
+    <button onclick="toggleCart()" style="margin-top:20px;padding:12px 20px;background:#8B4513;color:#fff;border:none;border-radius:6px;font-size:16px;cursor:pointer;">Xem giỏ hàng</button>
+  </section>
+  <section id="sanpham">
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <div class="cart" id="cart">
+    <h4>Giỏ hàng</h4>
+    <div id="cartItems"></div>
+    <div style="margin-top:10px; font-weight:bold;">Tổng: <span id="cartTotal">0₫</span></div>
+    <button class="checkout" onclick="checkout()">Thanh toán</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Cây Cảnh 77 | Đà Nẵng</p>
+  </footer>
+
+  <script>
+    const products=[
+      {id:1,name:'Mai Vàng',price:750000,img:'https://images.unsplash.com/photo-1501004318643-1c2d1c5b1b3f?auto=format&fit=crop&w=600&q=60'},
+      {id:2,name:'Cây Thần Tài',price:350000,img:'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=600&q=60'},
+      {id:3,name:'Nha Đam',price:150000,img:'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=60'},
+      {id:4,name:'Phong Lan',price:500000,img:'https://images.unsplash.com/photo-1518173946685-9a9d4f0e9f0e?auto=format&fit=crop&w=600&q=60'}
+    ];
+
+    const cart=[];
+
+    function formatPrice(num){return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+'₫';}
+
+    function renderProducts(){
+      const grid=document.getElementById('productGrid');
+      grid.innerHTML='';
+      products.forEach(p=>{
+        const el=document.createElement('div');
+        el.className='product';
+        el.innerHTML=`<img src="${p.img}" alt="${p.name}">
+                      <h3>${p.name}</h3>
+                      <p>Cây phong thủy cho gia đình</p>
+                      <div class="price">${formatPrice(p.price)}</div>
+                      <button class="btn-add" onclick="addToCart(${p.id})">Thêm vào giỏ</button>`;
+        grid.appendChild(el);
+      });
+    }
+
+    function addToCart(id){
+      const prod=products.find(p=>p.id===id);
+      const item=cart.find(i=>i.id===id);
+      if(item){item.qty++;}else{cart.push({id:prod.id,name:prod.name,price:prod.price,qty:1});}
+      updateCart();
+    }
+
+    function updateCart(){
+      const container=document.getElementById('cartItems');
+      container.innerHTML='';
+      let total=0;
+      cart.forEach(i=>{
+        total+=i.price*i.qty;
+        const row=document.createElement('div');
+        row.className='cart-item';
+        row.innerHTML=`<span>${i.name} x${i.qty}</span><span>${formatPrice(i.price*i.qty)}</span>`;
+        container.appendChild(row);
+      });
+      document.getElementById('cartTotal').innerText=formatPrice(total);
+    }
+
+    function toggleCart(){
+      const cartBox=document.getElementById('cart');
+      cartBox.style.display=(cartBox.style.display==='block')?'none':'block';
+    }
+
+    function checkout(){
+      if(cart.length===0){alert('Giỏ hàng trống');return;}
+      alert('Đặt hàng thành công! Chúng tôi sẽ liên hệ sớm.');
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>
