@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cây Cảnh 77 - Trang chủ</title>
+  
+<link href="style css.css" rel="stylesheet" type="text/css">
+	<script src="javascript.js"></script>
+</head>
+<body>
+  <header>Cây Cảnh 77</header>
+  <nav>
+    <a href="#">Trang chủ</a>
+    <a href="#sanpham">Sản phẩm</a>
+    <a href="#lienhe">Liên hệ</a>
+  </nav>
+  <section class="hero">
+    <h1>Chăm sóc cây, nuôi mộng xanh</h1>
+    <p>Chuyên Mai Vàng, Thần Tài, Nha Đam và Phong Lan - giao tận nơi Đà Nẵng.</p>
+    <button onclick="toggleCart()" style="margin-top:20px;padding:12px 20px;background:#8B4513;color:#fff;border:none;border-radius:6px;font-size:16px;cursor:pointer;">Xem giỏ hàng</button>
+  </section>
+  <section id="sanpham">
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <div class="cart" id="cart">
+    <h4>Giỏ hàng</h4>
+    <div id="cartItems"></div>
+    <div style="margin-top:10px; font-weight:bold;">Tổng: <span id="cartTotal">2tr₫</span></div>
+    <button class="checkout" onclick="checkout()">Thanh toán</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Cây Cảnh 77 | Đà Nẵng</p>
+  </footer>
+
+<body>
+</body>
+</html>
