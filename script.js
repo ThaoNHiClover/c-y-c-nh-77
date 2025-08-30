@@ -2,6 +2,12 @@
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap-4.4.1.js"></script>
 <script>
+	function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+    function toggleCart() {
+      alert("Giỏ hàng đang trống!");
   $(document).ready(function(){
     $('#carouselExampleIndicators1').carousel({
       interval: 3000,   // thời gian trượt 3 giây
@@ -117,3 +123,4 @@
   return regex.test(password);
 }</script>
 	
+
