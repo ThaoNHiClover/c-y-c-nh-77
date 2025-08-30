@@ -38,7 +38,7 @@ function toggleMenu() {
                       <button class="btn-add" onclick="addToCart(${p.id})">Thêm vào giỏ</button>`;
         grid.appendChild(el);
       });
-    
+    }
     function addToCart(id){
       const prod=products.find(p=>p.id===id);
       const item=cart.find(i=>i.id===id);
@@ -73,13 +73,13 @@ function toggleMenu() {
     renderProducts();
   </script>
 <input type="button" value="LIÊN HỆ" style="background-color: green; color: white;">
-<h> Email: </h>
+<h3> Email: </h3>
 		<input type="email" required>
 	<script>
 	function isValidEmail(email) {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);} </script>
-	<h>Telephone:</h>
+	<h3>Telephone:</h3>
 	<input type="tel" pattern="0[0-9]{9}" required>
 	<script>
   // Hàm kiểm tra số điện thoại
@@ -101,7 +101,7 @@ function toggleMenu() {
   const phone = "0912345678";
   console.log(maskPhone(phone)); // Kết quả: 091****678
 </script>
-	<h>Password: </h>
+	<h3>Password: </h3>
 	<input type="password">
 	<script>
 		function isValidPassword(password) {
@@ -109,6 +109,7 @@ function toggleMenu() {
   return regex.test(password);
 }</script>
 	
+
 
 
 
