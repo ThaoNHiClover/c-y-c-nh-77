@@ -1,67 +1,114 @@
 <!doctype html>
+
 <html lang="vi">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Cây Cảnh 77 - Trang chủ</title>
-  <style>
-    body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333;}
-    header {background:#228B22; color:#fff; padding:16px; text-align:center; font-size:24px; font-weight:bold;}
-    nav {display:flex; justify-content:center; gap:20px; background:#2e7d32; padding:10px 0;}
-    nav a {color:#fff; text-decoration:none; font-weight:bold;}
-    .hero {text-align:center; padding:40px; background:#e8f5e9;}
-    .hero h1 {font-size:36px; margin-bottom:10px;}
-    .hero p {font-size:18px; color:#555;}
-    .product-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; padding:20px; max-width:1200px; margin:0 auto;}
-    .product {background:#fff; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); overflow:hidden; display:flex; flex-direction:column;}
-    .product img {width:100%; height:220px; object-fit:cover;}
-    .product h3 {margin:10px; font-size:20px;}
-    .product p {margin:0 10px 10px; color:#666; font-size:14px;}
-    .price {margin:10px; font-size:18px; color:#8B4513; font-weight:bold;}
-    .btn-add {margin:10px; padding:10px; background:#228B22; color:#fff; border:none; border-radius:6px; cursor:pointer; font-size:16px;}
-    .btn-add:hover {background:#2e7d32;}
-    .cart {position:fixed; top:20px; right:20px; background:#fff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.2); padding:16px; width:280px; display:none;}
-    .cart h4 {margin-top:0;}
-    .cart-item {display:flex; justify-content:space-between; font-size:14px; margin-bottom:6px;}
-    .checkout {background:#8B4513; color:#fff; border:none; padding:10px; width:100%; margin-top:10px; border-radius:6px; cursor:pointer;}
-    footer {text-align:center; padding:20px; background:#2e7d32; color:#fff; margin-top:30px;}
-    @media(max-width:600px){.hero h1{font-size:28px;}.product img{height:180px;}}
-  </style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+<link href="../style css.css" rel="stylesheet" type="text/css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <header>Cây Cảnh 77</header>
-  <nav>
+<nav>
     <a href="#">Trang chủ</a>
     <a href="#sanpham">Sản phẩm</a>
     <a href="#lienhe">Liên hệ</a>
-  </nav>
-  <section class="hero">
-    <h1>Chăm sóc cây, nuôi mộng xanh</h1>
+	  <h1>Chăm sóc cây, nuôi mộng xanh</h1>
     <p>Chuyên Mai Vàng, Thần Tài, Nha Đam và Phong Lan - giao tận nơi Đà Nẵng.</p>
     <button onclick="toggleCart()" style="margin-top:20px;padding:12px 20px;background:#8B4513;color:#fff;border:none;border-radius:6px;font-size:16px;cursor:pointer;">Xem giỏ hàng</button>
-  </section>
-  <section id="sanpham">
-    <div class="product-grid" id="productGrid"></div>
-  </section>
+  </nav>
+	<div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel"  data-interval="3000" style="background-color: #fff;" >
+<ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+	<li data-target="#carouselExampleIndicators1" data-slide-to="3"></li>
+  </ol>
+		<div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="../z6955019100560_6d54f0a3f66a01fdcf86d40726194191.jpg" width="1000px" height="500px" alt="First slide">
+      <div class="carousel-caption">
+        <h5>Chuyên Mai vàng</h5>
+        <p>2tr</p>
+      </div>
+    </div>
 
-  <div class="cart" id="cart">
+    <div class="carousel-item">
+      <img class="d-block w-100" src="../z6955019166917_40324b5190a866209fc6dad028e5939a.jpg" width="1000px" height="500px" alt="Second slide">
+      <div class="carousel-caption">
+        <h5>Chuyên Nha đam</h5>
+        <p>300k</p>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <img class="d-block w-100" src="z6960935616586_6f8c1dd7078fa264b9e6dd38d5ee05f5.jpg" width="1000px" height="500px" alt="Third slide">
+      <div class="carousel-caption">
+        <h5>Chuyên Thần Tài Núi</h5>
+        <p>1tr</p>
+      </div>
+    </div>
+<div class="carousel-item">
+      <img class="d-block w-100" src="z6960935788678_994e2e54fadcdfd43221fd8ab68ee75f.jpg" width="1000px" height="500px" alt="Third slide">
+      <div class="carousel-caption">
+        <h5>Chuyên Phong Lan</h5>
+        <p>1tr</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nút điều hướng -->
+  <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<!-- jQuery, Popper.js, Bootstrap JS -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap-4.4.1.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#carouselExampleIndicators1').carousel({
+      interval: 3000,   // thời gian trượt 3 giây
+      ride: 'carousel'  // tự động chạy
+    });
+  });
+</script>
+
+<section id="sanpham">
+  <div class="product-grid" id="productGrid"></div>
+  </section>
+<div class="cart" id="cart">
     <h4>Giỏ hàng</h4>
     <div id="cartItems"></div>
-    <div style="margin-top:10px; font-weight:bold;">Tổng: <span id="cartTotal">0₫</span></div>
+    <div style="margin-top:10px; font-weight:bold;">Tổng: <span id="cartTotal">2tr₫</span></div>
     <button class="checkout" onclick="checkout()">Thanh toán</button>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Cây Cảnh 77 | Đà Nẵng</p>
-  </footer>
-
-  <script>
+<script>
     const products=[
-      {id:1,name:'Mai Vàng',price:750000,img:'https://images.unsplash.com/photo-1501004318643-1c2d1c5b1b3f?auto=format&fit=crop&w=600&q=60'},
-      {id:2,name:'Cây Thần Tài',price:350000,img:'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=600&q=60'},
-      {id:3,name:'Nha Đam',price:150000,img:'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=60'},
-      {id:4,name:'Phong Lan',price:500000,img:'https://images.unsplash.com/photo-1518173946685-9a9d4f0e9f0e?auto=format&fit=crop&w=600&q=60'}
-    ];
+  {id:1, name:'Mai Vàng', price:750000, img:'../z6955019100560_6d54f0a3f66a01fdcf86d40726194191.jpg'},
+  {id:2, name:'Cây Thần Tài', price:350000, img:'z6960935616586_6f8c1dd7078fa264b9e6dd38d5ee05f5.jpg'},
+  {id:3, name:'Nha Đam', price:150000, img:'../z6955019166917_40324b5190a866209fc6dad028e5939a.jpg'},
+  {id:4, name:'Phong Lan', price:500000, img:'z6960935788678_994e2e54fadcdfd43221fd8ab68ee75f.jpg'}
+];
 
     const cart=[];
 
@@ -115,5 +162,107 @@
 
     renderProducts();
   </script>
+<input type="button" value="LIÊN HỆ" style="background-color: green; color: white;">
+<h> Email: </h>
+		<input type="email" required>
+	<script>
+	function isValidEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);} </script>
+	<h>Telephone:</h>
+	<input type="tel" pattern="0[0-9]{9}" required>
+	<script>
+	function isValidPhone(phone) {
+  const regex = /^(0|\+84)[0-9]{9}$/;
+  return regex.test(phone);
+}</script>
+	<h>Password: </h>
+	<input type="password">
+	<script>
+		function isValidPassword(password) {
+  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+  return regex.test(password);
+}</script>
+	
+	 <h5 class="card-title"> ĐỊA ĐIỂM CỬA HÀNG&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</h5>
+<h6><P> Địa điểm cửa hàng</P></h6>
+<div class="active"><a href="" target="_blank"><img src="../../../Pictures/Screenshots/Screenshot (7).png" class="active img-thumbnail"></a></div>
+<h6> Tìm kiếm theo khu vực
+	<div class="dropdown show"> <a class="btn btn-sm dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tỉnh Thành </a>
+	  <div class="dropdown-menu">
+	    <h6 class="dropdown-header">Đà Nẵng</h6>
+	    <a class="dropdown-item" href="#"></a> <a class="dropdown-item disabled" href="#" ></a> <a class="dropdown-item" href="#"></a>
+	    <div class="dropdown-divider"></div>
+	    <a class="dropdown-item" href="#"></a> </div>
+</div>
+  <div class="col-xl-4">
+    <div class="dropdown show"> <a class="btn btn-sm dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Quận huyện </a>
+      <div class="dropdown-menu">
+		  <h6 class="dropdown-header"> QUẬN HUYỆN</h6>
+		  <div class="dropdown-item">Ngũ Hành Sơn</a></div>
+		   <div class="dropdown-item"><a href="LIÊN HỆ.html" target="_blank" class="dropdown-item" >Sơn Trà</a></div>
+		  <div class="dropdown-divider">Sơn Trà</div>
+		     
+		  <div class="dropdown-item">
+	 <a href="https://www.facebook.com/profile.php?id=100093254413100" target="_blank" class="dropdown-item" >Hải Châu</a></div>
+		   <div class="dropdown-divider">
+    </div>
+    </div>
+  </div>
+  <div class="col-xl-4">
+    <div class="dropdown show"> <a class="btn btn-sm dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Phường Xã </a>
+      <div class="dropdown-menu">
+        <h6 class="dropdown-header">Phường Xã</h6>
+		  <div class="dropdown-divider"><a href="" target="_blank" class="dropdown-item" >Ngũ Hành Sơn</div>
+			   <div class="dropdown-item">
+		 <a href="https://www.facebook.com/profile.php?id=100093254413100" target="_blank" class="dropdown-item">
+																								 P.Hòa Hải</a></div>
+		   <div class="dropdown-item"> <a href="https://www.facebook.com/profile.php?id=100093254413100" target="_blank" class="dropdown-item"> P.Hòa Quý</a></div>
+			<div class="dropdown-item"> <a href="https://www.facebook.com/profile.php?id=100093254413100" target="_blank" class="dropdown-item"> P.Khuê Mỹ</a></div>
+	  <div class="dropdown-item"> <a href="https://www.facebook.com/profile.php?id=100093254413100" target="_blank" class="dropdown-item"> P.Mỹ An</a></div>
+			    </div>
+		
+		 <div class="col-xl-4">
+    <div class="dropdown show"> <a class="btn btn-sm dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> </a>
+      <div class="dropdown-menu">
+        <h6 class="dropdown-header"></h6>
+		 <div class="dropdown-divider"><a href="LIÊN HỆ.html" target="_blank" class="dropdown-item" >Sơn Trà</a></div>
+	 <div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.An Hải Bắc</a></div>
+		    <div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.An Hải Đông</a></div>
+		   <div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.An Hải Tây</a></div>
+	 <div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Mân Thái</a></div>
+		 <div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Nại Hiên Đông</a></div>
+	 <div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Phước Mỹ</a></div>
+		 <div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Thọ Quang</a></div>
+		</div>
+			 </div>
+		 <div class="col-xl-4">
+    <div class="dropdown show"> <a class="btn btn-sm dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> </a>
+		<div class="dropdown-menu">
+        <h6 class="dropdown-header">Hải Châu</h6>
+	<div class="dropdown-divider"><a href="" target="_blank" class="dropdown-item" >Hải Châu</div>
+<div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Hải Châu I</a></div>
+		 <div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Hải Châu II</a></div>
+		<div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Hòa Cường Nam </a></div>
+		 <div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Hòa Thuận Đông </a></div>
+		 <div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Hòa Thuận Tây </a></div>
+	<div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Nam Dương </a></div>
+		<div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Phước Ninh </a></div>
+		<div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Thạch Quang </a></div>
+		<div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Thạch Thang </a></div>
+		<div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">Thanh Bình </a></div>
+		<div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Thuận Phước </a></div>
+		<div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Bình Hiên </a></div>
+		<div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Bình Thuận </a></div>
+			  </div>
+		</div>
+			 </div>
+<button type="button" class="btn btn-success"><a href="https://www.google.com/maps/place/Nami+Tea,+Coffee+and+Milktea/@16.0230417,108.2408826,17z/data=!4m6!3m5!1s0x314217e701d25a23:0x59656565544ec78f!8m2!3d16.0231006!4d108.2410071!16s%2Fg%2F11r1gbq6vp?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">TÌM KIẾM</a></button>
+  
+      </div>
+	  
+  <footer>
+    <p>&copy; 2025 Cây Cảnh 77 | Đà Nẵng</p>
+  </footer>
 </body>
 </html>
