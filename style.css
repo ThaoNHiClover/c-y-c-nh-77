@@ -1,7 +1,7 @@
 <style>
     body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333;}
     header {background:#228B22; color:#fff; padding:16px; text-align:center; font-size:24px; font-weight:bold;}
-    nav {display:flex; justify-content:center; gap:20px; background:#2e7d32; padding:10px 0;}
+    nav {display:flex; justify-content:center; gap:20px; background:#228B22; padding:10px 0;}
     nav a {color:#fff; text-decoration:none; font-weight:bold;}
     .hero {text-align:center; padding:40px; background:#e8f5e9;}
     .hero h1 {font-size:36px; margin-bottom:10px;}
@@ -22,4 +22,5 @@
     @media(max-width:600px){.hero h1{font-size:28px;}.product img{height:180px;}}
   </style>@charset "utf-8";
 /* CSS Document */
+
 
