@@ -14,19 +14,6 @@
       ride: 'carousel'  // tự động chạy
     });
   });
-</script>
-
-<section id="sanpham">
-  <div class="product-grid" id="productGrid"></div>
-  </section>
-<div class="cart" id="cart">
-    <h4>Giỏ hàng</h4>
-    <div id="cartItems"></div>
-    <div style="margin-top:10px; font-weight:bold;">Tổng: <span id="cartTotal">2tr₫</span></div>
-    <button class="checkout" onclick="checkout()">Thanh toán</button>
-  </div>
-
-<script>
     const products=[
   {id:1, name:'Mai Vàng', price:2000000, img:'./z6955019100560_6d54f0a3f66a01fdcf86d40726194191.jpg'},
   {id:2, name:'Cây Thần Tài', price:1000000, img:'./z6960935616586_6f8c1dd7078fa264b9e6dd38d5ee05f5.jpg'},
@@ -51,8 +38,7 @@
                       <button class="btn-add" onclick="addToCart(${p.id})">Thêm vào giỏ</button>`;
         grid.appendChild(el);
       });
-    }
-
+    
     function addToCart(id){
       const prod=products.find(p=>p.id===id);
       const item=cart.find(i=>i.id===id);
@@ -123,4 +109,5 @@
   return regex.test(password);
 }</script>
 	
+
 
