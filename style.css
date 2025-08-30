@@ -3,6 +3,77 @@
     header {background:#228B22; color:#fff; padding:16px; text-align:center; font-size:24px; font-weight:bold;}
     nav {display:flex; justify-content:center; gap:20px; background:#228B22; padding:10px 0;}
     nav a {color:#fff; text-decoration:none; font-weight:bold;}
+ nav {
+      background: #228B22;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    /* Logo / Title */
+    nav h1 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    nav p {
+      font-size: 14px;
+      margin: 5px 0 0;
+    }
+
+    /* Links */
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #2E8B57;
+        padding: 10px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Cart button */
+    .cart-btn {
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: #8B4513;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
     .hero {text-align:center; padding:40px; background:#e8f5e9;}
     .hero h1 {font-size:36px; margin-bottom:10px;}
     .hero p {font-size:18px; color:#555;}
@@ -22,5 +93,6 @@
     @media(max-width:600px){.hero h1{font-size:28px;}.product img{height:180px;}}
   </style>@charset "utf-8";
 /* CSS Document */
+
 
 
