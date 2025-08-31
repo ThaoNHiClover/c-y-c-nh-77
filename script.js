@@ -1,19 +1,15 @@
-
-
-
 $(document).ready(function(){
   $('#carouselExampleIndicators1').carousel({
     interval: 3000,
     ride: 'carousel'
   });
 });
-
-const cart=[];
-
-function formatPrice(num){
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+'₫';
-}
-
+ const products=[
+  {id:1, name:'Mai Vàng', price:2000000, img:'./z6955019100560_6d54f0a3f66a01fdcf86d40726194191.jpg'},
+  {id:2, name:'Cây Thần Tài', price:1000000, img:'./z6960935616586_6f8c1dd7078fa264b9e6dd38d5ee05f5.jpg'},
+  {id:3, name:'Nha Đam', price:300000, img:'./z6955019166917_40324b5190a866209fc6dad028e5939a.jpg'},
+  {id:4, name:'Phong Lan', price:1000000, img:'z6960935788678_994e2e54fadcdfd43221fd8ab68ee75f.jpg'}
+]; 
 function renderProducts(){
   const grid=document.getElementById('productGrid');
   grid.innerHTML='';
@@ -28,9 +24,21 @@ function renderProducts(){
       <button class="btn-add" onclick="addToCart(${p.id})">Thêm vào giỏ</button>`;
     grid.appendChild(el);
   });
+   
+} 
+
+
+  
+const cart=[];
+
+function formatPrice(num){
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+'₫';
 }
 
-async function addToCart(id) {
+
+async function addToCart(id) { 
+    
+
   const prod = products.find(p => p.id === id);
 
   await fetch("http://localhost:3000/api/cart/add", {
@@ -109,6 +117,8 @@ function showPopup(msg) {
 
   setTimeout(() => popup.remove(), 2000);
 }
-
 renderProducts();
+
+
+
 
