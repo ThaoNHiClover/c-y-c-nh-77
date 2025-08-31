@@ -1,5 +1,3 @@
-<!doctype html>
-
 <html lang="vi">
 <head>
   <meta charset="utf-8">
@@ -10,7 +8,7 @@
 
 <!-- jQuery -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
-<link href="../style css.css" rel="stylesheet" type="text/css">
+<link href="style.css" rel="stylesheet" type="text/css">
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -18,7 +16,8 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
-	<script src="./script.js"></script>
+<script src="script.js"></script>
+<script src="server.js"></script>
 </head>
 <body>
 <nav>
@@ -81,21 +80,116 @@
 </div>
 
 <!-- jQuery, Popper.js, Bootstrap JS -->
-<script src="js/jquery-3.4.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap-4.4.1.js"></script>
-<script>
-  $(document).ready(function(){
-    $('#carouselExampleIndicators1').carousel({
-      interval: 3000,   // thời gian trượt 3 giây
-      ride: 'carousel'  // tự động chạy
-    });
-  });
-</script>
+
 
 <section id="sanpham">
   <div class="product-grid" id="productGrid"></div>
   </section>
+<div class="row">
+  <div class="col-md-3"><img src="z6955019100560_6d54f0a3f66a01fdcf86d40726194191.jpg"width="300px"; height="300px">
+	  <p>Mai vàng</p>
+    <div class="card col-md-4"></div>
+    <button class="btn-tight">Thêm vào giỏ</button>
+    </button>
+  </div>
+  <div class="col-md-3">
+    <div class="card col-md-4"></div><img src="z6955019166917_40324b5190a866209fc6dad028e5939a.jpg"width="300px"; height="300px">
+	  <p>Nha đam</p>
+	 <button class="btn-tight">Thêm vào giỏ</button>
+  </div>
+  <div class="col-md-3">
+    <div class="card col-md-4"></div><img src="z6960935616586_6f8c1dd7078fa264b9e6dd38d5ee05f5.jpg" width="300px"; height="300px">
+	  <p>Thần tài núi</p>
+	  <button class="btn-tight">Thêm vào giỏ</button>
+  </div>
+  <div class="col-md-3">
+    <div class="card col-md-4"></div><img src="z6960935788678_994e2e54fadcdfd43221fd8ab68ee75f.jpg"width="300px"; height="300px">
+	  <p>Phong Lan</p>
+	  <button class="btn-tight">Thêm vào giỏ</button>
+  </div>
+</div>
+<script>
+   const products=[
+  {id:1, name:'Mai Vàng', price:2000000, img:'z6955019100560_6d54f0a3f66a01fdcf86d40726194191.jpg'},
+  {id:2, name:'Cây Thần Tài', price:1000000, img:'./z6960935616586_6f8c1dd7078fa264b9e6dd38d5ee05f5.jpg'},
+  {id:3, name:'Nha Đam', price:300000, img:'./z6955019166917_40324b5190a866209fc6dad028e5939a.jpg'},
+  {id:4, name:'Phong Lan', price:1000000, img:'z6960935788678_994e2e54fadcdfd43221fd8ab68ee75f.jpg'}
+]; 
+
+function renderProducts()
+
+  const grid=document.getElementById('productGrid');
+  grid.innerHTML='';
+  products.forEach(p=>{
+    const el=document.createElement('div');
+    el.className='product';
+    el.innerHTML=`
+      <img src="${p.img}" alt="${p.name}">
+      <h3>${p.name}</h3>
+      <p>Cây phong thủy cho gia đình</p>
+      <div class="price">${formatPrice(p.price)}</div>
+      <button class="btn-add" onclick="addToCart(${p.id})">Thêm vào giỏ</button>`;
+    grid.appendChild(el);
+  });
+   function formatPrice(value) {
+  return value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+}
+
+let cart = [];
+
+// Hàm thêm sản phẩm vào giỏ
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  if (!product) return;
+
+  // kiểm tra nếu sản phẩm đã có trong giỏ thì tăng số lượng
+  const item = cart.find(i => i.id === id);
+  if (item) {
+    item.qty++;
+  } else {
+    cart.push({...product, qty: 1});
+  }
+
+  renderCart();
+}
+
+// Hiển thị giỏ hàng
+function renderCart() {
+  const cartItems = document.getElementById('cartItems');
+  const cartTotal = document.getElementById('cartTotal');
+  cartItems.innerHTML = '';
+
+  let total = 0;
+  cart.forEach(item => {
+    total += item.price * item.qty;
+    const div = document.createElement('div');
+    div.textContent = `${item.name} x${item.qty} - ${formatPrice(item.price * item.qty)}`;
+    cartItems.appendChild(div);
+  });
+
+  cartTotal.textContent = formatPrice(total);
+}
+
+// Hàm thanh toán
+function checkout() {
+  if (cart.length === 0) {
+    alert("Giỏ hàng đang trống!");
+    return;
+  }
+
+  let summary = "Bạn đã đặt:\n";
+  cart.forEach(item => {
+    summary += `- ${item.name} x${item.qty} = ${formatPrice(item.price * item.qty)}\n`;
+  });
+
+  summary += `\nTổng cộng: ${document.getElementById('cartTotal').textContent}`;
+  alert(summary);
+
+  // Reset giỏ sau khi thanh toán
+  cart = [];
+  renderCart();
+}
+</script>
 <div class="cart" id="cart">
     <h4>Giỏ hàng</h4>
     <div id="cartItems"></div>
@@ -103,99 +197,16 @@
     <button class="checkout" onclick="checkout()">Thanh toán</button>
   </div>
 
-<script>
-    const products=[
-  {id:1, name:'Mai Vàng', price:2000000, img:'./z6955019100560_6d54f0a3f66a01fdcf86d40726194191.jpg'},
-  {id:2, name:'Cây Thần Tài', price:1000000, img:'./z6960935616586_6f8c1dd7078fa264b9e6dd38d5ee05f5.jpg'},
-  {id:3, name:'Nha Đam', price:300000, img:'./z6955019166917_40324b5190a866209fc6dad028e5939a.jpg'},
-  {id:4, name:'Phong Lan', price:1000000, img:'z6960935788678_994e2e54fadcdfd43221fd8ab68ee75f.jpg'}
-];
-
-    const cart=[];
-
-    function formatPrice(num){return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+'₫';}
-
-    function renderProducts(){
-      const grid=document.getElementById('productGrid');
-      grid.innerHTML='';
-      products.forEach(p=>{
-        const el=document.createElement('div');
-        el.className='product';
-        el.innerHTML=`<img src="${p.img}" alt="${p.name}">
-                      <h3>${p.name}</h3>
-                      <p>Cây phong thủy cho gia đình</p>
-                      <div class="price">${formatPrice(p.price)}</div>
-                      <button class="btn-add" onclick="addToCart(${p.id})">Thêm vào giỏ</button>`;
-        grid.appendChild(el);
-      });
-    }
-
-    function addToCart(id){
-      const prod=products.find(p=>p.id===id);
-      const item=cart.find(i=>i.id===id);
-      if(item){item.qty++;}else{cart.push({id:prod.id,name:prod.name,price:prod.price,qty:1});}
-      updateCart();
-    }
-
-    function updateCart(){
-      const container=document.getElementById('cartItems');
-      container.innerHTML='';
-      let total=0;
-      cart.forEach(i=>{
-        total+=i.price*i.qty;
-        const row=document.createElement('div');
-        row.className='cart-item';
-        row.innerHTML=`<span>${i.name} x${i.qty}</span><span>${formatPrice(i.price*i.qty)}</span>`;
-        container.appendChild(row);
-      });
-      document.getElementById('cartTotal').innerText=formatPrice(total);
-    }
-
-    function toggleCart(){
-      const cartBox=document.getElementById('cart');
-      cartBox.style.display=(cartBox.style.display==='block')?'none':'block';
-    }
-
-    function checkout(){
-      if(cart.length===0){alert('Giỏ hàng trống');return;}
-      alert('Đặt hàng thành công! Chúng tôi sẽ liên hệ sớm.');
-    }
-
-    renderProducts();
-  </script>
 <input type="button" value="LIÊN HỆ" style="background-color: green; color: white;">
-<h> Email: </h>
+<h1> Email: </h1>
 		<input type="email" required>
-	<script>
-	function isValidEmail(email) {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);} </script>
-	<h>Telephone:</h>
-	<input type="tel" pattern="0[0-9]{9}" required>
-	<script>
-  // Hàm kiểm tra số điện thoại
-  function isValidPhone(phone) {
-    const regex = /^(0|\+84)[0-9]{9}$/; // số bắt đầu 0 hoặc +84, sau đó có 9 số
-    return regex.test(phone);
-  }
-
-  // Hàm ẩn số điện thoại
-  function maskPhone(phone) {
-    if (!isValidPhone(phone)) {
-      return "Số điện thoại không hợp lệ";
-    }
-    // Ví dụ: 0912345678 => 091****678
-    return phone.replace(/(\d{3})(\d{4})(\d{3})/, "$1****$3");
-  }
-
-  // Test thử
-  const phone = "0912345678";
-  console.log(maskPhone(phone)); // Kết quả: 091****678
-
-}</script>
+        <h2> Telephone:</h2>
+        <input type="telephone" required>
+        <h3> Password:</h3>
+        <input type="password" required>
 	
 	 <h5 class="card-title"> ĐỊA ĐIỂM CỬA HÀNG&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</h5>
-<h6><P> Địa điểm cửa hàng</P></h6>
+<h6>Địa điểm cửa hàng</h6>
 <div class="active"><a href="" target="_blank"><img src="../../../Pictures/Screenshots/Screenshot (7).png" class="active img-thumbnail"></a></div>
 <h6> Tìm kiếm theo khu vực
 	<div class="dropdown show"> <a class="btn btn-sm dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tỉnh Thành </a>
@@ -209,8 +220,8 @@
     <div class="dropdown show"> <a class="btn btn-sm dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Quận huyện </a>
       <div class="dropdown-menu">
 		  <h6 class="dropdown-header"> QUẬN HUYỆN</h6>
-		  <div class="dropdown-item">Ngũ Hành Sơn</a></div>
-		   <div class="dropdown-item"><a href="LIÊN HỆ.html" target="_blank" class="dropdown-item" >Sơn Trà</a></div>
+		
+		   <div class="dropdown-item">Ngũ Hành Sơn<a href="LIÊN HỆ.html" target="_blank" class="dropdown-item" >Sơn Trà</a></div>
 		  <div class="dropdown-divider">Sơn Trà</div>
 		     
 		  <div class="dropdown-item">
@@ -223,7 +234,7 @@
     <div class="dropdown show"> <a class="btn btn-sm dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Phường Xã </a>
       <div class="dropdown-menu">
         <h6 class="dropdown-header">Phường Xã</h6>
-		  <div class="dropdown-divider"><a href="" target="_blank" class="dropdown-item" >Ngũ Hành Sơn</div>
+		  <div class="dropdown-divider">Phường</div>
 			   <div class="dropdown-item">
 		 <a href="https://www.facebook.com/profile.php?id=100093254413100" target="_blank" class="dropdown-item">
 																								 P.Hòa Hải</a></div>
@@ -250,7 +261,7 @@
     <div class="dropdown show"> <a class="btn btn-sm dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> </a>
 		<div class="dropdown-menu">
         <h6 class="dropdown-header">Hải Châu</h6>
-	<div class="dropdown-divider"><a href="" target="_blank" class="dropdown-item" >Hải Châu</div>
+			<div class="dropdown-divider">Hải Châu<a href="" target="_blank" class="dropdown-item" ></a></div>
 <div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Hải Châu I</a></div>
 		 <div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Hải Châu II</a></div>
 		<div class="dropdown-item"><a class="dropdown-item" href="https://www.bing.com/maps?q=nami+tea%2C+coffee+and+milk+tea&FORM=HDRSC6&cp=16.022633%7E108.241124&lvl=16.0">P.Hòa Cường Nam </a></div>
@@ -274,12 +285,5 @@
   <footer>
     <p>&copy; 2025 Cây Cảnh 77 | Đà Nẵng</p>
   </footer>
-</body>
+		</body>
 </html>
-
-
-
-
-
-
-
