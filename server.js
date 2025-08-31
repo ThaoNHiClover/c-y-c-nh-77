@@ -1,3 +1,13 @@
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Hello từ backend Render!");
+});
+
+// Render sẽ tự set PORT qua biến môi trường
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server chạy trên port ${PORT}`));
 
 // server.js
 const express = require("express");
@@ -35,3 +45,4 @@ app.post("/api/contact", (req, res) => {
 });
 
 app.listen(3000, () => console.log("✅ Server chạy tại http://localhost:3000"));
+
