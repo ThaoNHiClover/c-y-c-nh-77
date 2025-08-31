@@ -1,16 +1,4 @@
 const express = require("express");
-const app = express();
-
-app.get("/", (req, res) => {
-  res.send("Hello từ backend Render!");
-});
-
-// Render sẽ tự set PORT qua biến môi trường
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server chạy trên port ${PORT}`));
-
-// server.js
-const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
@@ -19,6 +7,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 let cart = [];
+
+// Route test
+app.get("/", (req, res) => {
+  res.send("Hello từ backend Render!");
+});
 
 // API: Thêm vào giỏ hàng
 app.post("/api/cart/add", (req, res) => {
@@ -44,5 +37,6 @@ app.post("/api/contact", (req, res) => {
   res.json({ success: true, msg: "Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm." });
 });
 
-app.listen(3000, () => console.log("✅ Server chạy tại http://localhost:3000"));
-
+// Lắng nghe cổng do Render cấp
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`✅ Server chạy tại http://localhost:${PORT}`));
