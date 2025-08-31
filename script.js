@@ -1,4 +1,4 @@
-$(document).ready(function(){
+  $(document).ready(function(){
   $('#carouselExampleIndicators1').carousel({
     interval: 3000,
     ride: 'carousel'
@@ -118,7 +118,3 @@ function showPopup(msg) {
   setTimeout(() => popup.remove(), 2000);
 }
 renderProducts();
-
-
-
-
