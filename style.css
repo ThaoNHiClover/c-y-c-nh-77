@@ -62,7 +62,15 @@
         display: block;
       }
     }
-
+.btn-tight {
+    display: inline-block;        /* để chỉ ôm đúng nội dung */
+    padding: .4em .9em;
+    border: 1px solid #222;
+    border-radius: 999px;         /* kiểu pill */
+    background: #2E8B57;
+    cursor: pointer;
+    font: inherit;
+  }
     /* Cart button */
     .cart-btn {
       margin-top: 10px;
@@ -93,6 +101,7 @@
     @media(max-width:600px){.hero h1{font-size:28px;}.product img{height:180px;}}
   </style>@charset "utf-8";
 /* CSS Document */
+
 
 
 
