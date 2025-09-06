@@ -44,3 +44,4 @@ function updateCart(cart) {
   });
   document.getElementById("cartTotal").innerText = formatPrice(total);
 }
+
