@@ -1,3 +1,59 @@
+// Hàm thêm sản phẩm vào giỏ
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  if (!product) return;
+
+  // kiểm tra nếu sản phẩm đã có trong giỏ thì tăng số lượng
+  const item = cart.find(i => i.id === id);
+  if (item) {
+    item.qty++;
+  } else {
+    cart.push({...product, qty: 1});
+  }
+
+  renderCart();
+}
+
+// Hiển thị giỏ hàng
+function renderCart() {
+  const cartItems = document.getElementById('cartItems');
+  const cartTotal = document.getElementById('cartTotal');
+  cartItems.innerHTML = '';
+
+  let total = 0;
+  cart.forEach(item => {
+    total += item.price * item.qty;
+    const div = document.createElement('div');
+    div.textContent = `${item.name} x${item.qty} - ${formatPrice(item.price * item.qty)}`;
+    cartItems.appendChild(div);
+  });
+
+  cartTotal.textContent = formatPrice(total);
+}
+
+// Hàm thanh toán
+function checkout() {
+  if (cart.length === 0) {
+    alert("Giỏ hàng đang trống!");
+    return;
+  }
+
+  let summary = "Bạn đã đặt:\n";
+  cart.forEach(item => {
+    summary += `- ${item.name} x${item.qty} = ${formatPrice(item.price * item.qty)}\n`;
+  });
+
+  summary += `\nTổng cộng: ${document.getElementById('cartTotal').textContent}`;
+  alert(summary);
+
+  // Reset giỏ sau khi thanh toán
+  cart = [];
+  renderCart();
+}
+
+
+
+
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
@@ -112,3 +168,4 @@ app.delete("/api/cart", (req, res) => {
 // ----------- START SERVER -----------
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ Server chạy tại http://localhost:${PORT}`));
+
