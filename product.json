@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "Mai Vàng", "price": 2000000, "img": "z6955019100560_6d54f0a3f66a01fdcf86d40726194191.jpg" },
+  { "id": 2, "name": "Cây Thần Tài", "price": 1000000, "img": "z6960935616586_6f8c1dd7078fa264b9e6dd38d5ee05f5.jpg" },
+  { "id": 3, "name": "Nha Đam", "price": 300000, "img": "z6955019166917_40324b5190a866209fc6dad028e5939a.jpg" },
+  { "id": 4, "name": "Phong Lan", "price": 1000000, "img": "z6960935788678_994e2e54fadcdfd43221fd8ab68ee75f.jpg" }
+]
