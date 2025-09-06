@@ -1,4 +1,6 @@
-  async function addToCart(id, name, price) {
+const API_URL = https://c-y-c-nh-77.onrender.com;
+await fetch(`${API_URL}/api/cart`, { ... })
+async function addToCart(id, name, price) {
   await fetch("http://localhost:3000/api/cart", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -44,3 +46,4 @@ function updateCart(cart) {
   });
   document.getElementById("cartTotal").innerText = formatPrice(total);
 }
+
