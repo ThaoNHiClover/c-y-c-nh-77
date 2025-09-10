@@ -1,14 +1,41 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const fs = require("fs");
+const path = require("path");
 
 const app = express();
-
 app.use(cors());
 app.use(bodyParser.json());
 
-// Giỏ hàng lưu tạm trong RAM
-let cart = [];
+// File lưu giỏ hàng
+const CART_FILE = path.join(__dirname, "cart.json");
+
+// Hàm đọc giỏ hàng từ file
+function loadCart() {
+  try {
+    if (fs.existsSync(CART_FILE)) {
+      const data = fs.readFileSync(CART_FILE, "utf8");
+      return JSON.parse(data);
+    }
+    return [];
+  } catch (err) {
+    console.error("❌ Lỗi đọc cart.json:", err);
+    return [];
+  }
+}
+
+// Hàm ghi giỏ hàng ra file
+function saveCart(cart) {
+  try {
+    fs.writeFileSync(CART_FILE, JSON.stringify(cart, null, 2));
+  } catch (err) {
+    console.error("❌ Lỗi ghi cart.json:", err);
+  }
+}
+
+// Giỏ hàng load từ file
+let cart = loadCart();
 
 // Trang chủ test
 app.get("/", (req, res) => {
@@ -68,6 +95,7 @@ app.post("/api/cart/clear", (req, res) => {
   cart = [];
   res.json({ success: true, cart });
 });
+
 
 
 
