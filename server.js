@@ -63,5 +63,12 @@ app.post("/api/contact", (req, res) => {
 // Chạy server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server chạy tại http://localhost:${PORT}`));
+// API: Xóa toàn bộ giỏ hàng sau khi checkout
+app.post("/api/cart/clear", (req, res) => {
+  cart = [];
+  res.json({ success: true, cart });
+});
+
+
 
 
