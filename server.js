@@ -61,24 +61,37 @@ app.get("/api/cart", (req, res) => {
 
 // API: Cập nhật số lượng
 app.put("/api/cart/:id", (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = req.params.id;
   const { qty } = req.body;
+
   const item = cart.find(i => i.id === id);
   if (item) {
     item.qty = qty;
     if (item.qty <= 0) {
       cart = cart.filter(i => i.id !== id);
     }
+    saveCart(cart); // Lưu sau khi cập nhật
+    return res.json({ success: true, cart });
   }
-  res.json(cart);
+
+  res.status(404).json({ success: false, msg: "Sản phẩm không tồn tại" });
 });
 
 // API: Xóa sản phẩm
 app.delete("/api/cart/:id", (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = req.params.id;
+
+  const before = cart.length;
   cart = cart.filter(i => i.id !== id);
-  res.json(cart);
+
+  if (cart.length < before) {
+    saveCart(cart); // Lưu sau khi xóa
+    return res.json({ success: true, cart });
+  }
+
+  res.status(404).json({ success: false, msg: "Không tìm thấy sản phẩm để xóa" });
 });
+
 
 // API: Gửi liên hệ
 app.post("/api/contact", (req, res) => {
@@ -95,6 +108,7 @@ app.post("/api/cart/clear", (req, res) => {
   cart = [];
   res.json({ success: true, cart });
 });
+
 
 
 
