@@ -51,6 +51,7 @@ app.post("/api/cart/add", (req, res) => {
   } else {
     cart.push({ id, name, price, qty: 1 });
   }
+  saveCart(cart); // ✅ Lưu lại sau khi thêm
   res.json({ success: true, cart });
 });
 
@@ -70,7 +71,7 @@ app.put("/api/cart/:id", (req, res) => {
     if (item.qty <= 0) {
       cart = cart.filter(i => i.id !== id);
     }
-    saveCart(cart); // Lưu sau khi cập nhật
+    saveCart(cart); // ✅ Lưu lại sau khi cập nhật
     return res.json({ success: true, cart });
   }
 
@@ -80,18 +81,23 @@ app.put("/api/cart/:id", (req, res) => {
 // API: Xóa sản phẩm
 app.delete("/api/cart/:id", (req, res) => {
   const id = req.params.id;
-
   const before = cart.length;
   cart = cart.filter(i => i.id !== id);
 
   if (cart.length < before) {
-    saveCart(cart); // Lưu sau khi xóa
+    saveCart(cart); // ✅ Lưu lại sau khi xóa
     return res.json({ success: true, cart });
   }
 
   res.status(404).json({ success: false, msg: "Không tìm thấy sản phẩm để xóa" });
 });
 
+// API: Clear toàn bộ giỏ hàng
+app.post("/api/cart/clear", (req, res) => {
+  cart = [];
+  saveCart(cart); // ✅ Lưu file trống
+  res.json({ success: true, cart });
+});
 
 // API: Gửi liên hệ
 app.post("/api/contact", (req, res) => {
@@ -103,11 +109,7 @@ app.post("/api/contact", (req, res) => {
 // Chạy server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server chạy tại http://localhost:${PORT}`));
-// API: Xóa toàn bộ giỏ hàng sau khi checkout
-app.post("/api/cart/clear", (req, res) => {
-  cart = [];
-  res.json({ success: true, cart });
-});
+
 
 
 
