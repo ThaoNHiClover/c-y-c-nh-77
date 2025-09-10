@@ -57,6 +57,31 @@ function updateCart(cart) {
 function formatPrice(value) {
   return value.toLocaleString("vi-VN", { style: "currency", currency: "VND" });
 }
+async function checkout() {
+  const res = await fetch("http://localhost:3000/api/cart");
+  const cart = await res.json();
+
+  if (cart.length === 0) {
+    alert("Giỏ hàng đang trống!");
+    return;
+  }
+
+  let summary = "Bạn đã đặt:\n";
+  let total = 0;
+  cart.forEach(item => {
+    summary += `- ${item.name} x${item.qty} = ${formatPrice(item.price * item.qty)}\n`;
+    total += item.price * item.qty;
+  });
+
+  summary += `\nTổng cộng: ${formatPrice(total)}`;
+  alert(summary);
+
+  // Sau khi thanh toán, clear giỏ hàng ở backend
+  await fetch("http://localhost:3000/api/cart/clear", { method: "POST" });
+  refreshCart();
+}
+
+
 
 
 
