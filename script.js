@@ -1,3 +1,10 @@
+// Hàm mở modal giỏ hàng (cho nút toggleCart() cũ)
+function toggleCart() {
+  // Dùng Bootstrap 4 để hiển thị modal
+  $('#cartModal').modal('show');
+  refreshCart(); // load lại giỏ hàng mỗi khi mở
+}
+
 // Link backend Render của bạn
 const API_URL = "https://c-y-c-nh-77-2.onrender.com";
 
@@ -57,8 +64,10 @@ function updateCart(cart) {
 function formatPrice(value) {
   return value.toLocaleString("vi-VN", { style: "currency", currency: "VND" });
 }
+
+// Thanh toán
 async function checkout() {
-  const res = await fetch("http://localhost:3000/api/cart");
+  const res = await fetch(`${API_URL}/api/cart`);
   const cart = await res.json();
 
   if (cart.length === 0) {
@@ -77,7 +86,7 @@ async function checkout() {
   alert(summary);
 
   // Sau khi thanh toán, clear giỏ hàng ở backend
-  await fetch("http://localhost:3000/api/cart/clear", { method: "POST" });
+  await fetch(`${API_URL}/api/cart/clear`, { method: "POST" });
   refreshCart();
 }
 
