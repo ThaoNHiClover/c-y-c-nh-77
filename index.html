@@ -28,6 +28,36 @@
     <p>Chuyên Mai Vàng, Thần Tài, Nha Đam và Phong Lan - giao tận nơi Đà Nẵng.</p>
     <button onclick="toggleCart()" style="margin-top:20px;padding:12px 20px;background:#8B4513;color:#fff;border:none;border-radius:6px;font-size:16px;cursor:pointer;">Xem giỏ hàng</button>
   </nav>
+	<!-- Nút mở popup giỏ hàng -->
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cartModal">
+  🛒 Xem giỏ hàng
+</button>
+
+<!-- Modal giỏ hàng -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="cartModalLabel">Giỏ hàng của bạn</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+      </div>
+
+      <div class="modal-body">
+        <div id="cartItems"></div>
+        <hr>
+        <p><strong>Tổng cộng: </strong><span id="cartTotal">0₫</span></p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-success" onclick="checkout()">Thanh toán</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 	<div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel"  data-interval="3000" style="background-color: #fff;" >
 <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
@@ -220,4 +250,5 @@
   </footer>
 		</body>
 </html>
+
 
