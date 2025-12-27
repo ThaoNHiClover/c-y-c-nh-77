@@ -133,7 +133,6 @@ function updateCart(cart) {
 
 // Thanh toán
 async function checkout() {
-  async function checkout() {
   const hoten = document.getElementById("hoten").value.trim();
   const sdt = document.getElementById("sdt").value.trim();
   const diachi = document.getElementById("diachi").value.trim();
@@ -183,6 +182,7 @@ window.onload = () => {
   loadProducts();
   refreshCart();
 };
+
 
 
 
