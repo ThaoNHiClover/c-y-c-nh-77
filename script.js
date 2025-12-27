@@ -133,33 +133,58 @@ function updateCart(cart) {
 
 // Thanh toán
 async function checkout() {
-  const res = await fetch(`${API_URL}/api/cart`);
-  const cart = await res.json();
+  async function checkout() {
+  const hoten = document.getElementById("hoten").value.trim();
+  const sdt = document.getElementById("sdt").value.trim();
+  const diachi = document.getElementById("diachi").value.trim();
 
-  if (cart.length === 0) {
-    alert("🛒 Giỏ hàng đang trống!");
+  if (!hoten || !sdt) {
+    alert("Vui lòng nhập họ tên và số điện thoại");
     return;
   }
 
-  let summary = "✅ Bạn đã đặt:\n";
-  let total = 0;
-  cart.forEach(item => {
-    summary += `- ${item.name} x${item.qty} = ${formatPrice(item.price * item.qty)}\n`;
-    total += item.price * item.qty;
+  // 🔥 LẤY GIỎ HÀNG TỪ BACKEND RENDER
+  const res = await fetch(`${API_URL}/api/cart`);
+  const cart = await res.json();
+
+  if (!cart || cart.length === 0) {
+    alert("🛒 Giỏ hàng trống");
+    return;
+  }
+
+  // 🔥 GỬI ĐƠN SANG BACKEND PHP
+  const send = await fetch("http://caycanh77.site/xuly_dathang.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      hoten: hoten,
+      sdt: sdt,
+      diachi: diachi,
+      cart: cart
+    })
   });
 
-  summary += `\nTổng cộng: ${formatPrice(total)}`;
-  alert(summary);
+  const result = await send.json();
 
-  await fetch(`${API_URL}/api/cart/clear`, { method: "POST" });
-  refreshCart();
+  if (result.status === "success") {
+    alert("✅ Đặt hàng thành công!");
+
+    // XÓA GIỎ HÀNG BÊN RENDER
+    await fetch(`${API_URL}/api/cart/clear`, { method: "POST" });
+    refreshCart();
+  } else {
+    alert("❌ Lỗi gửi đơn hàng");
+  }
 }
-
 // ==================== KHI LOAD TRANG ====================
 window.onload = () => {
   loadProducts();
   refreshCart();
 };
+
+
 
 
 
