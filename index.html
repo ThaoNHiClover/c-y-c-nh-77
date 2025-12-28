@@ -8,7 +8,7 @@
 
 <!-- jQuery -->
 
-<link href="style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="./style.css">
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -19,7 +19,9 @@
 <script src="script.js"></script>
 
 </head>
+
 <body>
+    <a href="https://www.caycanh77.site">Về trang chính</a>
 <nav>
     <a href="#">Trang chủ</a>
     <a href="#sanpham">Sản phẩm</a>
@@ -100,7 +102,7 @@
       </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="nấm linh chi đỏ.jpg" width="1000px" height="500px" alt="Third slide">
+      <img class="d-block w-100" src="./nấm linh chi đỏ.jpg" width="1000px" height="500px" alt="Third slide">
       <div class="carousel-caption">
         <h5>Chuyên Linh Chi Đỏ</h5>
         <p>1tr</p>
@@ -127,32 +129,32 @@
 </section>
 
 <div class="row">
-  <div class="col-md-3"><img src="z6955019100560_6d54f0a3f66a01fdcf86d40726194191.jpg"width="300px"; height="300px">
+  <div class="col-md-3"><img src="./z6955019100560_6d54f0a3f66a01fdcf86d40726194191.jpg"width="300px"; height="300px">
 	  <p>Mai vàng</p>
     <div class="card col-md-4"></div>
     <button class="btn btn-success" onclick="addToCart(1, 'Mai vàng', 2000000)">Thêm vào giỏ</button>
     </button>
   </div>
   <div class="col-md-3">
-    <div class="card col-md-4"></div><img src="z6955019166917_40324b5190a866209fc6dad028e5939a.jpg"width="300px"; height="300px">
+    <div class="card col-md-4"></div><img src="./z6955019166917_40324b5190a866209fc6dad028e5939a.jpg"width="300px"; height="300px">
 	  <p>Nha đam</p>
 	 <button class="btn btn-success" onclick="addToCart(2, 'Nha đam', 300000)">Thêm vào giỏ</button>
 </div>
   </div>
   <div class="col-md-3">
-    <div class="card col-md-4"></div><img src="z6960935616586_6f8c1dd7078fa264b9e6dd38d5ee05f5.jpg" width="300px"; height="300px">
+    <div class="card col-md-4"></div><img src="./z6960935616586_6f8c1dd7078fa264b9e6dd38d5ee05f5.jpg" width="300px"; height="300px">
 	  <p>Thần tài núi</p>
 	  <button class="btn btn-success" onclick="addToCart(2, 'Thần tài núi', 1000000)">Thêm vào giỏ</button>
 </div>
   </div>
   <div class="col-md-3">
-    <div class="card col-md-4"></div><img src="z6960935788678_994e2e54fadcdfd43221fd8ab68ee75f.jpg"width="300px"; height="300px">
+    <div class="card col-md-4"></div><img src="./z6960935788678_994e2e54fadcdfd43221fd8ab68ee75f.jpg"width="300px"; height="300px">
 	  <p>Phong Lan</p>
 <button class="btn btn-success" onclick="addToCart(2, 'Phong lan', 1000000)">Thêm vào giỏ</button>
 </div>
   </div>
   <div class="col-md-3">
-    <div class="card col-md-4"></div><img src="nấm linh chi đỏ.jpg"width="300px"; height="300px">
+    <div class="card col-md-4"></div><img src="./nấm linh chi đỏ.jpg"width="300px"; height="300px">
 	  <p>Linh Chi Đỏ</p>
 	 <button class="btn btn-success" onclick="addToCart(2, 'Linh Chi Đỏ', 1000000)">Thêm vào giỏ</button>
 </div>
@@ -163,11 +165,10 @@
     <h4>Giỏ hàng</h4>
     <div id="cartItems"></div>
     <div style="margin-top:10px; font-weight:bold;">Tổng: <span id="cartTotal">2tr₫</span></div>
-	<input id="hoten" class="form-control mb-2" placeholder="Họ tên">
+<input id="hoten" class="form-control mb-2" placeholder="Họ tên">
 <input id="sdt" class="form-control mb-2" placeholder="Số điện thoại">
 <input id="diachi" class="form-control mb-2" placeholder="Địa chỉ giao hàng">
-
-    <button class="checkout" onclick="checkout()">Thanh toán</button>
+<button class="checkout" onclick="checkout()">Thanh toán</button>
   </div>
 
 <input type="button" value="LIÊN HỆ" style="background-color: green; color: white;">
@@ -263,14 +264,5 @@
   </footer>
 		</body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
