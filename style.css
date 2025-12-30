@@ -1,5 +1,5 @@
 
-    body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333;}
+    body {font-family: Arial, sans-serif; margin:0; padding:0; background:#228B22; color:#333;}
     header {background:#228B22; color:#fff; padding:16px; text-align:center; font-size:24px; font-weight:bold;}
     nav {display:flex; justify-content:center; gap:20px; background:#2e7d32; padding:10px 0;}
     nav a {color:#fff; text-decoration:none; font-weight:bold;}
@@ -85,7 +85,8 @@
     font: inherit;
   }
   .btn-tight:hover { background: #f3f3f3; }
-    .hero h1 {font-size:36px; margin-bottom:10px;}
+    .hero h1 {font-size:50px; margin-bottom:10px;background-color: aliceblue}
+    .hero h2 {font-size:40px; margin-bottom:10px;background-color: aliceblue}
     .hero p {font-size:18px; color:#555;}
     .product-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; padding:20px; max-width:1200px; margin:0 auto;}
     .product {background:#fff; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); overflow:visible; display:flex; flex-direction:column;}
@@ -103,5 +104,6 @@
     @media(max-width:600px){.hero h1{font-size:28px;}.product img{height:180px;}}
  
 /* CSS Document */
+
 
 
