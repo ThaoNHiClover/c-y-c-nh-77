@@ -23,6 +23,12 @@ async function loadProducts() {
             <button class="btn btn-success" onclick="addToCart('${p.id}', '${p.name.replace(/'/g, "\\'")}', ${p.price})">
               🛒 Thêm vào giỏ
             </button>
+             <br>
+      <a href="https://www.facebook.com/nguyen.ngoc.thao.nhi.809045"
+         target="_blank"
+         style="color:#1877f2;font-size:14px;">
+        📘 Liên hệ Facebook
+      </a>
           </div>
         </div>
       `;
@@ -182,6 +188,7 @@ window.onload = () => {
   loadProducts();
   refreshCart();
 };
+
 
 
 
